@@ -3,19 +3,17 @@ package com.jupitters.universalpetcare.service.user;
 import com.jupitters.universalpetcare.exceptions.ResourceAlreadyExistsException;
 import com.jupitters.universalpetcare.model.User;
 import com.jupitters.universalpetcare.repository.UserRepository;
-import com.jupitters.universalpetcare.repository.VeterinarianRepository;
+import com.jupitters.universalpetcare.repository.VeterinaryRepository;
 import com.jupitters.universalpetcare.request.CreateUserRequest;
-import lombok.AllArgsConstructor;
+import com.jupitters.universalpetcare.service.veterinary.VeterinaryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class UserService implements IUserService{
     private final UserRepository userRepository;
-    private final VeterinarianRepository veterinarianRepository;
+    private final VeterinaryService veterinaryService;
 
     @Override
     public User createUser(CreateUserRequest request){
@@ -25,7 +23,16 @@ public class UserService implements IUserService{
 
         switch (request.getUserType()){
             case "VET" -> {
-
+                return veterinaryService.createVeterinary(request);
+            }
+            case "PATIENT" -> {
+                return patientService.createPatient(request);
+            }
+            case "ADMIN" -> {
+                return adminService.createAdmin(request);
+            }
+            default -> {
+                return null;
             }
         }
     }
