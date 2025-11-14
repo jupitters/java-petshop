@@ -1,14 +1,16 @@
 package com.jupitters.universalpetcare.model;
 
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Veterinarian {
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String gender;
-    private String phoneNumber;
-    private String email;
-    private String password;
-    private String userType;
-    private boolean isEnabled;
-    private String specialization;
 }
