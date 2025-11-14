@@ -10,10 +10,5 @@ import lombok.RequiredArgsConstructor;
 public class VeterinaryService implements IVeterinaryService{
     private final UserAttributesMapper userAttributesMapper;
 
-    @Override
-    public User createVeterinary(CreateUserRequest request) {
-        Veterinary veterinary = new Veterinary();
-        userAttributesMapper.setCommonAttributes(request, veterinary);
-        veterinary.setSpecialization(request.getSpecialization());
-    }
+
 }
