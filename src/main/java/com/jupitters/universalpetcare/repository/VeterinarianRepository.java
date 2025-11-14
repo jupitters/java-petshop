@@ -1,4 +1,4 @@
 package com.jupitters.universalpetcare.repository;
 
-public class VeterinarianRepository {
+public interface VeterinarianRepository {
 }
