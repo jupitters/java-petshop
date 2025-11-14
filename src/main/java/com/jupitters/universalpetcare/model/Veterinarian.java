@@ -11,6 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Veterinarian {
+public class Veterinarian extends User{
     private Long id;
+    private String specialization;
 }
