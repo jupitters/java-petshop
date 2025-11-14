@@ -10,4 +10,5 @@ public class Veterinarian {
     private String password;
     private String userType;
     private boolean isEnabled;
+    private String specialization;
 }
