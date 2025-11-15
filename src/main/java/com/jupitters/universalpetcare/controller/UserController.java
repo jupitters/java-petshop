@@ -5,6 +5,7 @@ import com.jupitters.universalpetcare.request.CreateUserRequest;
 import com.jupitters.universalpetcare.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     private final UserService userService;
 
-    public void add(@RequestBody CreateUserRequest request){
-        userService.createUser(request);
+    @PostMapping("/add")
+    public User add(@RequestBody CreateUserRequest request){
+        return userService.createUser(request);
     }
 }
