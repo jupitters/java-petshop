@@ -1,5 +1,7 @@
 package com.jupitters.universalpetcare.controller;
 
+import com.jupitters.universalpetcare.dto.EntityConverter;
+import com.jupitters.universalpetcare.dto.UserDto;
 import com.jupitters.universalpetcare.model.User;
 import com.jupitters.universalpetcare.request.CreateUserRequest;
 import com.jupitters.universalpetcare.response.ApiResponse;
@@ -17,10 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("${url.api}/users")
 public class UserController {
     private final UserService userService;
+    private final EntityConverter<User, UserDto> entityConverter;
 
     @PostMapping("/add")
     public ResponseEntity<ApiResponse> add(@RequestBody CreateUserRequest request){
         User user = userService.createUser(request);
-        return ResponseEntity.ok(new ApiResponse("Success!", user));
+        UserDto userDto = entityConverter.mapEntityToDto(user, UserDto.class);
+        return ResponseEntity.ok(new ApiResponse("Success!", userDto));
     }
 }
