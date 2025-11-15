@@ -19,8 +19,6 @@ public class VeterinarianService implements IVeterinarianService {
         Veterinarian veterinarian = new Veterinarian();
         userAttributesMapper.setCommonAttributes(request, veterinarian);
         veterinarian.setSpecialization(request.getSpecialization());
-        veterinarianRepository.save(veterinarian);
-
-        return veterinarian;
+        return veterinarianRepository.save(veterinarian);
     }
 }
