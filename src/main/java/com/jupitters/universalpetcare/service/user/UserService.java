@@ -21,23 +21,6 @@ public class UserService implements IUserService{
 
     @Override
     public User createUser(CreateUserRequest request){
-        if (userRepository.existsByEmail(request.getEmail())) {
-            throw new ResourceAlreadyExistsException("Oops, " + request.getEmail() + " is already registered!");
-        }
 
-        switch (request.getUserType()){
-            case "VET" -> {
-                return veterinaryService.createVeterinary(request);
-            }
-            case "PATIENT" -> {
-                return patientService.createPatient(request);
-            }
-            case "ADMIN" -> {
-                return adminService.createAdmin(request);
-            }
-            default -> {
-                return null;
-            }
-        }
     }
 }
