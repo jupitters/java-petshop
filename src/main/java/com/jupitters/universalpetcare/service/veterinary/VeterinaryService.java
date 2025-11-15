@@ -5,8 +5,10 @@ import com.jupitters.universalpetcare.model.Veterinary;
 import com.jupitters.universalpetcare.request.CreateUserRequest;
 import com.jupitters.universalpetcare.service.user.UserAttributesMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
+@Service
 public class VeterinaryService implements IVeterinaryService{
     private final UserAttributesMapper userAttributesMapper;
 
