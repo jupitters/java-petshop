@@ -8,8 +8,8 @@ import com.jupitters.universalpetcare.service.user.UserAttributesMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class PatientService implements IPatientService {
     private final UserAttributesMapper userAttributesMapper;
     private final PatientRepository patientRepository;
@@ -18,6 +18,7 @@ public class PatientService implements IPatientService {
     public User createPatient(CreateUserRequest request) {
         Patient patient = new Patient();
         userAttributesMapper.setCommonAttributes(request, patient);
+
         return patientRepository.save(patient);
     }
 }
