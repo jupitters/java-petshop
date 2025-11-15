@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import static org.springframework.http.HttpStatus.CONFLICT;
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 
 @RequiredArgsConstructor
 @RestController
@@ -33,6 +34,9 @@ public class UserController {
             return ResponseEntity.ok(new ApiResponse("Success!", userDto));
         } catch (ResourceAlreadyExistsException e) {
             return ResponseEntity.status(CONFLICT)
+                    .body(new ApiResponse(e.getMessage(), null));
+        } catch (Exception e) {
+            return ResponseEntity.status(INTERNAL_SERVER_ERROR)
                     .body(new ApiResponse(e.getMessage(), null));
         }
     }
