@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Service
 public class VeterinarianService implements IVeterinarianService {
-    private UserAttributesMapper userAttributesMapper;
+    private final UserAttributesMapper userAttributesMapper;
     private final VeterinarianRepository veterinarianRepository;
 
     @Override
@@ -19,6 +19,7 @@ public class VeterinarianService implements IVeterinarianService {
         Veterinarian veterinarian = new Veterinarian();
         userAttributesMapper.setCommonAttributes(request, veterinarian);
         veterinarian.setSpecialization(request.getSpecialization());
+        veterinarianRepository.save(veterinarian);
 
         return veterinarian;
     }

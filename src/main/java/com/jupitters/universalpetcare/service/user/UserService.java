@@ -26,7 +26,7 @@ public class UserService implements IUserService{
 
         switch (request.getUserType()){
             case "VET" -> {
-                return veterinaryService.createVeterinary(request);
+                return veterinaryService.createVeterinarian(request);
             }
             case "PATIENT" -> {
                 return patientService.createPatient(request);
