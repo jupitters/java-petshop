@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Service
 public class VeterinaryService implements IVeterinaryService{
-    private final UserAttributesMapper userAttributesMapper;
+    private UserAttributesMapper userAttributesMapper;
 
     @Override
     public User createVeterinary(CreateUserRequest request) {
