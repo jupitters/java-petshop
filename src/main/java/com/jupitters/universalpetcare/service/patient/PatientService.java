@@ -14,11 +14,4 @@ public class PatientService implements IPatientService {
     private final UserAttributesMapper userAttributesMapper;
     private final PatientRepository patientRepository;
 
-    @Override
-    public User createPatient(CreateUserRequest request) {
-        Patient patient = new Patient();
-        userAttributesMapper.setCommonAttributes(request, patient);
-
-        return patientRepository.save(patient);
-    }
 }
