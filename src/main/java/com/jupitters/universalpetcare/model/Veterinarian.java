@@ -14,6 +14,5 @@ import lombok.Setter;
 @Entity
 @PrimaryKeyJoinColumn(name = "veterinarian_id")
 public class Veterinarian extends User{
-    private Long id;
-    private String specialization;
+
 }
