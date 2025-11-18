@@ -14,12 +14,5 @@ public class VeterinarianService implements IVeterinarianService {
     private final UserAttributesMapper userAttributesMapper;
     private final VeterinarianRepository veterinarianRepository;
 
-    @Override
-    public User createVeterinarian(CreateUserRequest request) {
-        Veterinarian veterinarian = new Veterinarian();
-        userAttributesMapper.setCommonAttributes(request, veterinarian);
-        veterinarian.setSpecialization(request.getSpecialization());
-
-        return veterinarianRepository.save(veterinarian);
-    }
+    
 }
