@@ -13,18 +13,5 @@ import lombok.Setter;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String firstName;
-    private String lastName;
-    private String gender;
-    private String phoneNumber;
-    private String email;
-    private String password;
-    private String userType;
-    private boolean isEnabled;
 
-    @Transient
-    private String specialization;
 }
