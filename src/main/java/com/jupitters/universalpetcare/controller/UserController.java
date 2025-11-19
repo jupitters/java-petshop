@@ -55,8 +55,16 @@ public class UserController {
     }
 
     public ResponseEntity<ApiResponse> getUser(Long userId) {
-        User user = userService.getUser(userId);
-        UserDto userDto = entityConverter.mapEntityToDto(user, UserDto.class);
-        return ResponseEntity.ok(new ApiResponse("Success!", userDto));
+        try {
+            User user = userService.getUser(userId);
+            UserDto userDto = entityConverter.mapEntityToDto(user, UserDto.class);
+            return ResponseEntity.ok(new ApiResponse("Success!", userDto));
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.status(NOT_FOUND)
+                    .body(new ApiResponse(e.getMessage(), null));
+        } catch (Exception e) {
+            return ResponseEntity.status(INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse(e.getMessage(), null));
+        }
     }
 }
