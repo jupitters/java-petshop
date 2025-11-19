@@ -42,6 +42,7 @@ public class UserService implements IUserService{
         }
     }
 
+    @Override
     public User updateUser(Long userId, UpdateUserRequest request) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found!"));
