@@ -39,7 +39,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping("/{userId}/update")
+    @PatchMapping("/{userId}/update")
     public ResponseEntity<ApiResponse> updateUser(@PathVariable Long userId, @RequestBody UpdateUserRequest request){
         try {
             User oldUser = userService.updateUser(userId, request);
