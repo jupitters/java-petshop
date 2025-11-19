@@ -53,4 +53,11 @@ public class UserService implements IUserService{
         user.setSpecialization(request.getSpecialization());
         return userRepository.save(user);
     }
+
+
+    public User getUser(Long userId){
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found!"));
+        return user;
+    }
 }
