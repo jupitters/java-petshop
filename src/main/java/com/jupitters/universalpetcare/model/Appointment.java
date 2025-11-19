@@ -18,5 +18,12 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @Entity
 public class Appointment {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String reason;
+    private LocalDate date;
+    private LocalTime time;
+    private String appointmentNo;
+    private LocalDate createdAt;
 }
