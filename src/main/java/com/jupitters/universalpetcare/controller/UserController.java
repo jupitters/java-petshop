@@ -68,4 +68,9 @@ public class UserController {
                     .body(new ApiResponse(e.getMessage(), null));
         }
     }
+
+    public ResponseEntity<ApiResponse> deleteUser(@PathVariable Long userId) {
+        userService.deleteUser(userId);
+        return ResponseEntity.ok(new ApiResponse("Deleted succssessfully!", null));
+    }
 }
