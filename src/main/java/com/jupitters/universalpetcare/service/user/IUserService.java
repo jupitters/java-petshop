@@ -1,9 +1,12 @@
 package com.jupitters.universalpetcare.service.user;
 
+import com.jupitters.universalpetcare.dto.UserDto;
 import com.jupitters.universalpetcare.exceptions.ResourceAlreadyExistsException;
 import com.jupitters.universalpetcare.model.User;
 import com.jupitters.universalpetcare.request.CreateUserRequest;
 import com.jupitters.universalpetcare.request.UpdateUserRequest;
+
+import java.util.List;
 
 public interface IUserService {
     User createUser(CreateUserRequest request) throws ResourceAlreadyExistsException;
@@ -13,4 +16,6 @@ public interface IUserService {
     User getUser(Long userId);
 
     void deleteUser(Long userId);
+
+    List<UserDto> getAllUsers();
 }

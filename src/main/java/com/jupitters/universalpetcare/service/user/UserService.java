@@ -1,5 +1,7 @@
 package com.jupitters.universalpetcare.service.user;
 
+import com.jupitters.universalpetcare.dto.EntityConverter;
+import com.jupitters.universalpetcare.dto.UserDto;
 import com.jupitters.universalpetcare.exceptions.ResourceAlreadyExistsException;
 import com.jupitters.universalpetcare.exceptions.ResourceNotFoundException;
 import com.jupitters.universalpetcare.model.User;
@@ -12,6 +14,9 @@ import com.jupitters.universalpetcare.service.veterinarian.IVeterinarianService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class UserService implements IUserService{
@@ -19,6 +24,7 @@ public class UserService implements IUserService{
     private final IVeterinarianService veterinaryService;
     private final IPatientService patientService;
     private final IAdminService adminService;
+    private final EntityConverter entityConverter;
 
     @Override
     public User createUser(CreateUserRequest request){
@@ -67,5 +73,13 @@ public class UserService implements IUserService{
                 .ifPresentOrElse(userRepository::delete, () -> {
                     throw new ResourceNotFoundException("User not found!");
                 });
+    }
+
+    @Override
+    public List<UserDto> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        return users.stream()
+                .map(user -> entityConverter.mapEntityToDto(user, UserDto.class))
+                .collect(Collectors.toList());
     }
 }

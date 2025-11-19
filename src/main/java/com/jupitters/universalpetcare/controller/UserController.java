@@ -22,7 +22,7 @@ import static org.springframework.http.HttpStatus.*;
 @RequestMapping("${url.api}/users")
 public class UserController {
     private final UserService userService;
-    private final EntityConverter<User, UserDto> entityConverter;
+    private final EntityConverter entityConverter;
 
     @PostMapping("/add")
     public ResponseEntity<ApiResponse> add(@RequestBody CreateUserRequest request){
