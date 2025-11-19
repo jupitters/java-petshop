@@ -55,7 +55,7 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<ApiResponse> getUser(Long userId) {
+    public ResponseEntity<ApiResponse> getUser(@PathVariable Long userId) {
         try {
             User user = userService.getUser(userId);
             UserDto userDto = entityConverter.mapEntityToDto(user, UserDto.class);
