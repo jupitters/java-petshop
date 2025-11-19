@@ -54,6 +54,7 @@ public class UserController {
         }
     }
 
+    @GetMapping("/{userId}")
     public ResponseEntity<ApiResponse> getUser(Long userId) {
         try {
             User user = userService.getUser(userId);
