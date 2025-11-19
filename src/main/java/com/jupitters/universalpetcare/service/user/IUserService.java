@@ -9,4 +9,6 @@ public interface IUserService {
     User createUser(CreateUserRequest request) throws ResourceAlreadyExistsException;
 
     User updateUser(Long userId, UpdateUserRequest request);
+
+    User getUser(Long userId);
 }
