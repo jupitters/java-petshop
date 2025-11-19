@@ -4,6 +4,7 @@ import com.jupitters.universalpetcare.exceptions.ResourceAlreadyExistsException;
 import com.jupitters.universalpetcare.model.User;
 import com.jupitters.universalpetcare.repository.UserRepository;
 import com.jupitters.universalpetcare.request.CreateUserRequest;
+import com.jupitters.universalpetcare.request.UpdateUserRequest;
 import com.jupitters.universalpetcare.service.admin.IAdminService;
 import com.jupitters.universalpetcare.service.patient.IPatientService;
 import com.jupitters.universalpetcare.service.veterinarian.IVeterinarianService;
@@ -38,5 +39,10 @@ public class UserService implements IUserService{
                 return null;
             }
         }
+    }
+
+    public User updateUser(Long userId, UpdateUserRequest request) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found!", null));
     }
 }
