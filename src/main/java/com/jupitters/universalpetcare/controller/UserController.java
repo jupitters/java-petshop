@@ -53,4 +53,10 @@ public class UserController {
                     .body(new ApiResponse(e.getMessage(), null));
         }
     }
+
+    public ResponseEntity<ApiResponse> getUser(Long userId) {
+        User user = userService.getUser(userId);
+        UserDto userDto = entityConverter.mapEntityToDto(user, UserDto.class);
+        return ResponseEntity.ok(new ApiResponse("Success!", userDto));
+    }
 }
