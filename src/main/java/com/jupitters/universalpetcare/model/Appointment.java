@@ -26,6 +26,8 @@ public class Appointment {
     private LocalTime time;
     private String appointmentNo;
     private LocalDate createdAt;
+
+    @Enumerated(EnumType.STRING)
     private AppointmentStatus status;
 
     @JoinColumn(name = "sender")
