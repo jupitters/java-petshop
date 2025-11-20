@@ -1,6 +1,7 @@
 package com.jupitters.universalpetcare.service.appointment;
 
 import com.jupitters.universalpetcare.model.Appointment;
+import com.jupitters.universalpetcare.request.UpdateAppointmentRequest;
 
 import java.util.List;
 

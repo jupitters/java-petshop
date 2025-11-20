@@ -2,9 +2,13 @@ package com.jupitters.universalpetcare.service.appointment;
 
 import com.jupitters.universalpetcare.model.Appointment;
 import com.jupitters.universalpetcare.request.UpdateAppointmentRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@RequiredArgsConstructor
+@Service
 public class AppointmentService implements IAppointmentService {
     @Override
     public Appointment createAppointment(Appointment appointment, Long sender, Long recipient) {
