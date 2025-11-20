@@ -1,4 +1,6 @@
 package com.jupitters.universalpetcare.service.appointment;
 
-public class AppointmentService {
+import com.jupitters.universalpetcare.model.Appointment;
+
+public class AppointmentService implements IAppointmentService {
 }
