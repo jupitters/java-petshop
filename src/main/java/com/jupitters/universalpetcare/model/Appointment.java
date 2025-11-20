@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 @Getter
 @Setter
@@ -31,4 +32,12 @@ public class Appointment {
     @Column(name = "recipient")
     @ManyToOne(fetch = FetchType.LAZY)
     private User veterinarian;
+    
+    public void addPatient(User sender) {
+        this.setPatient(sender);
+        if (sender.getAppointments() == null) {
+            sender.setAppointments(new ArrayList<Appointment>( ));
+        }
+        sender.getAppointments().add(this);
+    }
 }
