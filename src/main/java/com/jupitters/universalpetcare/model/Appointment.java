@@ -33,11 +33,5 @@ public class Appointment {
     @ManyToOne(fetch = FetchType.LAZY)
     private User veterinarian;
     
-    public void addPatient(User sender) {
-        this.setPatient(sender);
-        if (sender.getAppointments() == null) {
-            sender.setAppointments(new ArrayList<Appointment>( ));
-        }
-        sender.getAppointments().add(this);
-    }
+
 }
