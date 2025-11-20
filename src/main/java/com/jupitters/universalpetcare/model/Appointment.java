@@ -40,4 +40,12 @@ public class Appointment {
         }
         sender.getAppointments().add(this);
     }
+
+    public void addVeterinarian(User recipient){
+        this.setVeterinarian(recipient);
+        if (recipient.getAppointments() == null) {
+            recipient.setAppointments(new ArrayList<Appointment>());
+        }
+        recipient.getAppointments().add(this);
+    }
 }
