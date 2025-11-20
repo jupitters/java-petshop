@@ -9,6 +9,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Random;
 
 @Getter
 @Setter
@@ -47,5 +48,9 @@ public class Appointment {
             recipient.setAppointments(new ArrayList<Appointment>());
         }
         recipient.getAppointments().add(this);
+    }
+
+    public void setAppointmentNo(String appointmentNo) {
+        this.appointmentNo = String.valueOf(new Random().nextLong()).substring(1,11);
     }
 }
