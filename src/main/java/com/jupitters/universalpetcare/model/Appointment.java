@@ -50,5 +50,7 @@ public class Appointment {
         recipient.getAppointments().add(this);
     }
 
-
+    public void setAppointmentNo(String appointmentNo) {
+        this.appointmentNo = String.valueOf(new Random().nextLong()).substring(1,11);
+    }
 }
