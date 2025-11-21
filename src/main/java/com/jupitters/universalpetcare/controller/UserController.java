@@ -26,19 +26,7 @@ public class UserController {
     private final UserService userService;
     private final EntityConverter entityConverter;
 
-    @PostMapping("/add")
-    public ResponseEntity<ApiResponse> add(@RequestBody CreateUserRequest request){
-        try {
-            User user = userService.createUser(request);
-            UserDto userDto = entityConverter.mapEntityToDto(user, UserDto.class);
-            return ResponseEntity.ok(new ApiResponse("Success!", userDto));
-        } catch (ResourceAlreadyExistsException e) {
-            return ResponseEntity.status(CONFLICT)
-                    .body(new ApiResponse(e.getMessage(), null));
-        } catch (Exception e) {
-            return ResponseEntity.status(INTERNAL_SERVER_ERROR)
-                    .body(new ApiResponse(e.getMessage(), null));
-        }
+
     }
 
     @PatchMapping("/{userId}/update")
