@@ -56,7 +56,20 @@ public class UserController {
         }
     }
 
-
+    @GetMapping("/{userId}")
+    public ResponseEntity<ApiResponse> getUser(@PathVariable Long userId) {
+        try {
+            User user = userService.getUser(userId);
+            UserDto userDto = entityConverter.mapEntityToDto(user, UserDto.class);
+            return ResponseEntity.ok(new ApiResponse("Success!", userDto));
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.status(NOT_FOUND)
+                    .body(new ApiResponse(e.getMessage(), null));
+        } catch (Exception e) {
+            return ResponseEntity.status(INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse(e.getMessage(), null));
+        }
+    }
 
     @DeleteMapping("/{userId}/delete")
     public ResponseEntity<ApiResponse> deleteUser(@PathVariable Long userId) {
