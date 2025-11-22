@@ -75,5 +75,11 @@ public class UserService implements IUserService{
                 });
     }
 
-    
+    @Override
+    public List<UserDto> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        return users.stream()
+                .map(user -> entityConverter.mapEntityToDto(user, UserDto.class))
+                .collect(Collectors.toList());
+    }
 }
