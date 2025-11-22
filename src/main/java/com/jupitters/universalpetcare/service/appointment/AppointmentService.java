@@ -32,10 +32,7 @@ public class AppointmentService implements IAppointmentService {
         return null;
     }
 
-    @Override
-    public List<Appointment> getAllAppointments(Appointment appointment) {
-        return List.of();
-    }
+
 
     @Override
     public Appointment updateAppointment(Long id, UpdateAppointmentRequest request) {
