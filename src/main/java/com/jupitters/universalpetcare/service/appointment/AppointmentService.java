@@ -47,7 +47,10 @@ public class AppointmentService implements IAppointmentService {
 
     }
 
-
+    @Override
+    public Appointment getAppointmentById(Long id) {
+        return null;
+    }
 
     @Override
     public Appointment getAppointmentByNo(String appointmentNo) {
