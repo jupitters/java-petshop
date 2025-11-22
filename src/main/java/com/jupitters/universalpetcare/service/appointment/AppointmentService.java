@@ -37,10 +37,7 @@ public class AppointmentService implements IAppointmentService {
         return List.of();
     }
 
-    @Override
-    public Appointment updateAppointment(Long id, UpdateAppointmentRequest request) {
-        return null;
-    }
+
 
     @Override
     public void deleteAppointment(Long id) {
