@@ -48,7 +48,17 @@ public class UserService implements IUserService{
         }
     }
 
-
+    @Override
+    public User updateUser(Long userId, UpdateUserRequest request) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found!"));
+        user.setFirstName(request.getFirstName());
+        user.setLastName(request.getLastName());
+        user.setGender(request.getGender());
+        user.setPhoneNumber(request.getPhoneNumber());
+        user.setSpecialization(request.getSpecialization());
+        return userRepository.save(user);
+    }
 
     @Override
     public User getUser(Long userId){
