@@ -1,6 +1,7 @@
 package com.jupitters.universalpetcare.service.appointment;
 
 import com.jupitters.universalpetcare.enums.AppointmentStatus;
+import com.jupitters.universalpetcare.exceptions.ResourceNotFoundException;
 import com.jupitters.universalpetcare.model.Appointment;
 import com.jupitters.universalpetcare.model.User;
 import com.jupitters.universalpetcare.repository.AppointmentRepository;
@@ -44,7 +45,9 @@ public class AppointmentService implements IAppointmentService {
 
     @Override
     public void deleteAppointment(Long id) {
-
+        appointmentRepository.findById(id)
+                .ifPresentOrElse(appointmentRepository::delete,
+                        () -> {new ResourceNotFoundException("Appointment not found!");});
     }
 
     @Override
