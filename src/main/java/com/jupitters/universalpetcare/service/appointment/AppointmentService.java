@@ -34,7 +34,7 @@ public class AppointmentService implements IAppointmentService {
 
     @Override
     public List<Appointment> getAllAppointments(Appointment appointment) {
-        return List.of();
+        return appointmentRepository.findAll();
     }
 
     @Override
