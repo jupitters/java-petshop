@@ -67,13 +67,13 @@ public class UserService implements IUserService{
         return user;
     }
 
-
-
     @Override
-    public List<UserDto> getAllUsers() {
-        List<User> users = userRepository.findAll();
-        return users.stream()
-                .map(user -> entityConverter.mapEntityToDto(user, UserDto.class))
-                .collect(Collectors.toList());
+    public void deleteUser(Long userId) {
+        userRepository.findById(userId)
+                .ifPresentOrElse(userRepository::delete, () -> {
+                    throw new ResourceNotFoundException("User not found!");
+                });
     }
+
+
 }
