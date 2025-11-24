@@ -60,12 +60,7 @@ public class UserService implements IUserService{
         return userRepository.save(user);
     }
 
-    @Override
-    public User getUser(Long userId){
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found!"));
-        return user;
-    }
+
 
     @Override
     public void deleteUser(Long userId) {
