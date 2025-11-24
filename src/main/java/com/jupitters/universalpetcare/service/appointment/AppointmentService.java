@@ -52,7 +52,11 @@ public class AppointmentService implements IAppointmentService {
                         });
     }
 
-
+    @Override
+    public Appointment getAppointmentById(Long id) {
+        return appointmentRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Appointment not found!"));
+    }
 
     @Override
     public Appointment getAppointmentByNo(String appointmentNo) {
