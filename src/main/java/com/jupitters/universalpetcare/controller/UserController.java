@@ -41,20 +41,7 @@ public class UserController {
         }
     }
 
-    @PatchMapping("/{userId}/update")
-    public ResponseEntity<ApiResponse> updateUser(@PathVariable Long userId, @RequestBody UpdateUserRequest request){
-        try {
-            User oldUser = userService.updateUser(userId, request);
-            UserDto updatedUser = entityConverter.mapEntityToDto(oldUser, UserDto.class);
-            return ResponseEntity.ok(new ApiResponse("Updated Successfully!", updatedUser));
-        } catch (ResourceNotFoundException e) {
-            return ResponseEntity.status(NOT_FOUND)
-                    .body(new ApiResponse(e.getMessage(), null));
-        } catch (Exception e) {
-            return ResponseEntity.status(INTERNAL_SERVER_ERROR)
-                    .body(new ApiResponse(e.getMessage(), null));
-        }
-    }
+
 
     @GetMapping("/{userId}")
     public ResponseEntity<ApiResponse> getUser(@PathVariable Long userId) {
@@ -71,7 +58,19 @@ public class UserController {
         }
     }
 
-
+    @DeleteMapping("/{userId}/delete")
+    public ResponseEntity<ApiResponse> deleteUser(@PathVariable Long userId) {
+        try {
+            userService.deleteUser(userId);
+            return ResponseEntity.ok(new ApiResponse("Deleted succssessfully!", null));
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.status(NOT_FOUND)
+                    .body(new ApiResponse(e.getMessage(), null));
+        } catch (Exception e) {
+            return ResponseEntity.status(INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse(e.getMessage(), null));
+        }
+    }
 
     @GetMapping("/all")
     public ResponseEntity<ApiResponse> getAllUsers() {
