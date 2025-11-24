@@ -14,11 +14,5 @@ public class AdminService implements IAdminService{
     private final UserAttributesMapper userAttributesMapper;
     private final AdminRepository adminRepository;
 
-    @Override
-    public User createAdmin(CreateUserRequest request) {
-        Admin admin = new Admin();
-        userAttributesMapper.setCommonAttributes(request, admin);
-
-        return adminRepository.save(admin);
-    }
+    
 }
