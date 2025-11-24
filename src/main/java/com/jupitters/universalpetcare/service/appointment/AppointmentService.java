@@ -60,6 +60,6 @@ public class AppointmentService implements IAppointmentService {
 
     @Override
     public Appointment getAppointmentByNo(String appointmentNo) {
-        return null;
+        return appointmentRepository.findAppointmentByNo(appointmentNo);
     }
 }
