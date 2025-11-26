@@ -43,7 +43,14 @@ public class AppointmentService implements IAppointmentService {
         return null;
     }
 
-
+    @Override
+    public void deleteAppointment(Long id) {
+        appointmentRepository.findById(id)
+                .ifPresentOrElse(appointmentRepository::delete,
+                        () -> {
+                            new ResourceNotFoundException("Appointment not found!");
+                        });
+    }
 
     @Override
     public Appointment getAppointmentById(Long id) {
