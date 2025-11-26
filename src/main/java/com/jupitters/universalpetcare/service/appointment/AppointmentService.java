@@ -58,8 +58,5 @@ public class AppointmentService implements IAppointmentService {
                 .orElseThrow(() -> new ResourceNotFoundException("Appointment not found!"));
     }
 
-    @Override
-    public Appointment getAppointmentByNo(String appointmentNo) {
-        return appointmentRepository.findByAppointmentNo(appointmentNo);
-    }
+
 }
